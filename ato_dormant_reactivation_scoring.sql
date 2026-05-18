@@ -2,8 +2,7 @@
 -- Input: logins, users
 -- Output: user_id
 WITH recent_active_users AS (
-  SELECT 
-        l.user_id
+  SELECT DISTINCT l.user_id
   FROM logins l 
   JOIN users u ON l.user_id = u.user_id
   WHERE l.login_datetime > TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 1 DAY)
