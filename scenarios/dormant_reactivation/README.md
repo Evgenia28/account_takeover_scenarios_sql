@@ -10,7 +10,7 @@ Identification of dormant accounts with new logins and newly added cards; risk s
 
  ### Limitations:
 
-* geographic inconsistencies is not covered
+* geographic inconsistencies are not covered
 * device or cross-account linkage not being reviewed
 * IP anomalies not being reviewed
 * all post-reactivation transactions
