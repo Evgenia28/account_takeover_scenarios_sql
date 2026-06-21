@@ -56,3 +56,11 @@ SELECT
        COALESCE(f.total_attempted_deposit, 0) AS total_attempted_deposit
 FROM login_change lc
 JOIN financials f ON lc.user_id = f.user_id
+  
+Sample Output:
+  
+| user_id | current_iso2 | prev_iso2 | login_gap | current_device | prev_device | approved_dep_count | failed_dep_count | actual_total_deposit | attempted_total_deposit |
+|---------|--------------|-----------|-----------|----------------|-------------|--------------------|------------------|----------------------|-------------------------|
+| 10042   | GB           | DE        | 3         | mobile         | desktop     | 4                  | 2                | 850.00               | 1150.00                 |
+| 10187   | GB           | DE        | 7         | mobile         | desktop     | 6                  | 0                | 2400.00              | 2400.00                 |
+| 10391   | GB           | DE        | 1         | mobile         | desktop     | 2                  | 3                | 320.00               | 770.00                  |
