@@ -18,8 +18,8 @@ Operationally, these attacks can manifest as new or anomalous logins followed by
 ### Description: 
 
 #### This SQL study models the following ATO scenario:
-* Long-dormant account reactivation with a new card onboarding followed by rapid financial activity: ato_dormant_reactivation_scoring.sql
-* Unauthorised access followed by exploitation of stored payment methods and tokenised payment process: tokenized_payment_abuse.sql
+* Long-dormant account reactivation with a new card onboarding followed by rapid financial activity: [ato_dormant_reactivation_scoring.sql](scenarios/dormant_reactivation/ato_dormant_reactivation_scoring.sql)
+* Unauthorised access followed by exploitation of stored payment methods and tokenised payment process: [ato_tokenized_card_abuse.sql](scenarios/tokenized_card_abuse/ato_tokenized_card_abuse.sql)
 
 ### Limitations:
 * Scoring thresholds are illustrative and would require calibration against real population data to minimise false positives.
