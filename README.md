@@ -1,4 +1,4 @@
-### ato_dormant_reactivation_scoring.sql
+### scenarios/dormant_reactivation/ato_dormant_reactivation_scoring.sql
 ### Threat Overview: 
 Account Takeover (ATO) is a form of cybercrime in which a malicious actor gains the same access and permissions as the legitimate account holder. By impersonating a trusted user, attackers can bypass standard security checks and use these accounts to move illicit funds or drain existing balances. 
 
