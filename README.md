@@ -33,7 +33,7 @@ Operationally, these attacks can manifest as new or anomalous logins followed by
 * Common Table Expressions (CTEs)
 * Window functions: LAG for comparing current and previous values
 * QUALIFY for post-window filtering
-* CASE WHEN for sorting and labelling
+* CASE WHEN for categorisation and labelling
 * COUNT & CASE WHEN for approved/failed deposit aggregation
 * COALESCE for null handling
 * DATETIME_DIFF and TIMESTAMP_SUB for time-based analysis
