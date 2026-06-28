@@ -48,16 +48,17 @@ CREATE TABLE deposits (
     deposit_id	         INT           PRIMARY KEY,
     user_id	             INT           NOT NULL REFERENCES users(user_id),
     amount	             DECIMAL(10,2) NOT NULL,
-    currency	           VARCHAR       NOT NULL,
+    currency	          VARCHAR       NOT NULL,
     amount_gbp	         DECIMAL(10,2) NOT NULL,
     payment_method	     VARCHAR       NOT NULL,
-    payment_provider	   VARCHAR,
+    payment_provider	 VARCHAR,
     card_number_masked	 VARCHAR,
-    card_bin	           VARCHAR,
+    card_bin	         VARCHAR,
+    pm_id                INT    REFERENCES payment_methods(pm_id),
     pm_verification	     BOOLEAN, -- NULL for payment methods where verification is not applicable
     status	             VARCHAR      NOT NULL,
     result_description	 VARCHAR,
-    dep_datetime	       TIMESTAMP    NOT NULL
+    dep_datetime	      TIMESTAMP    NOT NULL
     ip_address           VARCHAR
 );	
 
