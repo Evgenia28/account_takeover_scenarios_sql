@@ -99,9 +99,9 @@ ORDER BY risk_score DESC
 
 -- Sample Output:
 
-Row |user_id |	recent_login_datetime	  | deposit_count |	failed_deposit_count|	new_card_count |	total_amount |	risk_score |	risk_tier |
-----|--------|--------------------------|---------------|---------------------|----------------|---------------|-------------|------------|  
-1	  |10042	 | 2026-08-30 03:00:00 UTC	| 7	            | 3	                  | 2	             | 6850.0	       | 6	         | high       |
-2 	|10187	 | 2026-08-30 01:00:00 UTC	| 4	            | 1	                  | 2	             | 3200.0	       | 4	         | medium     |
-3	  |10391	 | 2026-08-29 22:00:00 UTC	| 6             | 0	                  | 1	             | 1750.0	       | 4	         | medium     |
-4	  |10056	 | 2026-08-29 20:00:00 UTC	| 2	            | 0	                  | 1	             | 890.0	       | 3	         | monitoring |
+| Row | user_id | recent_login_datetime   | deposit_count | failed_deposit_count | new_card_count | total_amount | risk_score | risk_tier  |
+|-----|---------|-------------------------|---------------|----------------------|----------------|--------------|------------|------------|
+| 1   | 10042   | 2026-08-30 03:00:00 UTC | 7             | 3                    | 2              | 6850.0       | 6          | high       |
+| 2   | 10187   | 2026-08-30 01:00:00 UTC | 4             | 1                    | 2              | 3200.0       | 4          | medium     |
+| 3   | 10391   | 2026-08-29 22:00:00 UTC | 6             | 0                    | 1              | 1750.0       | 4          | medium     |
+| 4   | 10056   | 2026-08-29 20:00:00 UTC | 2             | 0                    | 1              | 890.0        | 3          | monitoring |
