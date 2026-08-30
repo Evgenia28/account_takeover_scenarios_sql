@@ -1,12 +1,13 @@
+
 -- CTE 1 Seeds pipeline with today's active users only
 -- Input: logins, users
 -- Output: user_id
 WITH recent_active_users AS (
   SELECT DISTINCT l.user_id
-  FROM logins l 
-  JOIN users u ON l.user_id = u.user_id
+  FROM code-testing-ato.test.logins l 
+  JOIN code-testing-ato.test.users u ON l.user_id = u.user_id
   WHERE l.login_datetime > TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 1 DAY)
-  AND u.country = 'Mordor'
+  AND u.country = 'MR'
 ),
 --CTE 2 Identifies users with reactivation event after a long period of dormancy (12+ months)
 -- Input: recent_active_users, logins
@@ -16,11 +17,11 @@ reactivation_event AS (
         l.user_id,
         LAG(l.login_datetime) OVER(PARTITION BY l.user_id ORDER BY l.login_datetime) AS prev_login_datetime,
         l.login_datetime AS recent_login_datetime,
-        DATETIME_DIFF(l.login_datetime, LAG(l.login_datetime) OVER(PARTITION BY l.user_id ORDER BY l.login_datetime), MONTH) AS login_gap,
+        DATETIME_DIFF(DATETIME(l.login_datetime), DATETIME(LAG(l.login_datetime) OVER(PARTITION BY l.user_id ORDER BY l.login_datetime)), MONTH) AS login_gap,
         LAG(l.useragent) OVER(PARTITION BY l.user_id ORDER BY l.login_datetime) AS prev_useragent,
         l.useragent AS recent_useragent
   FROM recent_active_users rac
-  JOIN logins l ON rac.user_id = l.user_id
+  JOIN code-testing-ato.test.logins l ON rac.user_id = l.user_id
   QUALIFY login_gap >= 12
 ),
 -- CTE 3 Enriches with financial data
@@ -41,9 +42,9 @@ financials AS (
                   THEN pm.card_number_masked END) AS new_card_count,
         SUM(d.amount) AS total_amount
   FROM reactivation_event re
-  JOIN deposits d ON re.user_id = d.user_id
-  LEFT JOIN payment_methods pm ON re.user_id = pm.user_id AND d.card_number_masked = pm.card_number_masked
-  WHERE d.created_at BETWEEN re.recent_login_datetime AND TIMESTAMP_ADD(re.recent_login_datetime, INTERVAL 24 HOUR) 
+  JOIN code-testing-ato.test.deposits d ON re.user_id = d.user_id
+  LEFT JOIN code-testing-ato.test.payment_methods pm ON re.user_id = pm.user_id AND d.card_number_masked = pm.card_number_masked
+  WHERE d.dep_datetime BETWEEN re.recent_login_datetime AND TIMESTAMP_ADD(re.recent_login_datetime, INTERVAL 24 HOUR) 
   AND d.payment_method IN ('debit card', 'credit card')
   GROUP BY re.user_id
 ),
